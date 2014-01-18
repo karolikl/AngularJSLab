@@ -14,8 +14,4 @@
         var index = $scope.itemlist.indexOf(item);
         $scope.itemlist.splice(index, 1);
     };
-
-    //$scope.addOne = function(item) {
-    //    item.amount++;
-    //};
 })
