@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>This event will be great - AngularJSLab</title>
+    <link href="styles/site.css" rel="stylesheet">
+    <link href="styles/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+    <div id="wrap">
+             <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="../" class="navbar-brand">AngularJSLab</a>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Resources <span class="caret"></span></a>
+                            <ul class="dropdown-menu" aria-labelledby="themes">
+                                <li><a tabindex="-1" href="http://www.youtube.com/watch?v=i9MHigUZKEM" target="_blank">Video</a></li>
+                                <li><a tabindex="-1" href="http://angularjs.org/" target="_blank">angularjs.org</a></li>
+                                <li class="divider"></li>
+                                <li><a tabindex="-1" href="../more/">More to come</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Exercises<span class="caret"></span></a>
+                           <ul class="dropdown-menu" aria-labelledby="themes">
+                                <li>
+                                    <a href="One.html">1. Tell me your name!</a>
+                                </li>
+                                <li>
+                                    <a href="Two.html">2. Have you seen these movies?</a>
+                                </li>
+                                <li>
+                                    <a href="Three.html">3. Let&#39;s go shopping</a>
+                                </li>
+                                <li>
+                                    <a href="Four.html">4. The staring dog</a>
+                                </li>
+                                <li>
+                            <a href="Five.html">5. This event will be great</a>
+                        </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+           <div class="page-header" id="banner">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>This event will be great</h1>
+            </div>
+        </div>
+    </div>
+<div ng-app>
+    <div class="col-lg-6">
+        <div class="well">
+            <form name="regForm" class="form-horizontal">
+                <fieldset>
+                    <legend>Registration Form</legend>
+                    <div class="form-group">
+                        <label for="inputFirstname" class="col-lg-2 control-label">Firstname</label>
+                        <div class="col-lg-10">
+                            <input type="text" name="firstname" class="form-control" id="inputFirstname" ng-model="person.firstname" placeholder="Firstname" required>
+                            <span ng-show="regForm.firstname.$error.required" class="help-block error">Firstname is required</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLastname" class="col-lg-2 control-label">Lastname</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="inputLastname" ng-model="person.lastname" placeholder="Lastname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPhone" class="col-lg-2 control-label">Phone</label>
+                        <div class="col-lg-10">
+                            <input type="text" name="phone" class="form-control" id="inputPhone" ng-model="person.phone" placeholder="Phone number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                        <div class="col-lg-10">
+                            <input type="email" name="email" class="form-control" id="inputEmail" ng-model="person.email" placeholder="Email" required>
+                            <span ng-show="regForm.email.$error.required" class="help-block error">Email is required</span>
+                            <span ng-show="regForm.email.$error.email" class="help-block error">Not a valid email address</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputWebsite" class="col-lg-2 control-label">Website</label>
+                        <div class="col-lg-10">
+                            <input type="url" name="website" class="form-control" id="inputWebsite" ng-model="person.website" placeholder="Website">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button class="btn btn-default">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <p class="help-block">The form has been changed</p>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Exercises</h3>
+            </div>
+            <div class="panel-body">
+                <ol>
+                    <li>
+                        <p>
+                            Make lastname a required field, displaying an error message below the input if it is invalid. 
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Phone number should not be required, but it has to contain between 8 and 12 characters. An error message should be displayed under the input if the length requirement is not satisfied. Please add validation logic to satisfy these requirements. 
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            The value entered into the Website input has to be a valid url. Can you add an error message below the input if the value entered is not valid?
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            If the form is invalid, the submit button should be disabled. Can you fix this?
+                        </p>
+                    </li>
+                    <li>
+                        <p>At the moment the text "The form has been changed" is showing at all times. Can you make this text display only when the form is dirty (has been changed)?</p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">More information</h3>
+            </div>
+            <div class="panel-body">
+                What we're using here is the <a target="_blank" href="http://docs.angularjs.org/api/ng.directive:ngShow">ngShow</a> directive, the <a target="_blank" href="http://docs.angularjs.org/api/ng.directive:input.text">input.text</a> directive, the <a target="_blank" href="http://docs.angularjs.org/api/ng.directive:input.url">input.url</a> directive and the <a target="_blank" href="http://docs.angularjs.org/api/ng.directive:ngDisabled">ngDisabled</a> directive. 
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+        <div class="alert alert-success">
+              <strong>Well done!</strong> You successfully reached the end of the lab. Keep in touch tough, there will be more exercises coming up shortly! Tell your friends!
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div id="push"></div>
+      
+    </div>
+      <div id="footer">
+            <div class="container">
+                <p class="credit">Created by <a href="http://www.twitter.com/karolikl" target="_blank">Karoline Klever</a>. <strong>Do you like this lab?</strong> Please Tweet about it using the hashtag #AngularJSLab</p>
+            </div>
+        </div>
+        <script src="Scripts/jquery/jquery-1.9.1.js"></script>
+    <script src="Scripts/bootstrap/bootstrap.js"></script>
+    <script src="Scripts/angular/angular.js"></script>
+</body>
+</html>

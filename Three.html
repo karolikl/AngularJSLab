@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Let's go shopping - AngularJSLab</title>
+    <link href="styles/site.css" rel="stylesheet">
+    <link href="styles/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+    <div id="wrap">
+             <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="../" class="navbar-brand">AngularJSLab</a>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Resources <span class="caret"></span></a>
+                            <ul class="dropdown-menu" aria-labelledby="themes">
+                                <li><a tabindex="-1" href="http://www.youtube.com/watch?v=i9MHigUZKEM" target="_blank">Video</a></li>
+                                <li><a tabindex="-1" href="http://angularjs.org/" target="_blank">angularjs.org</a></li>
+                                <li class="divider"></li>
+                                <li><a tabindex="-1" href="../more/">More to come</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Exercises<span class="caret"></span></a>
+                           <ul class="dropdown-menu" aria-labelledby="themes">
+                                <li>
+                                    <a href="One.html">1. Tell me your name!</a>
+                                </li>
+                                <li>
+                                    <a href="Two.html">2. Have you seen these movies?</a>
+                                </li>
+                                <li>
+                                    <a href="Three.html">3. Let&#39;s go shopping</a>
+                                </li>
+                                <li>
+                                    <a href="Four.html">4. The staring dog</a>
+                                </li>
+                                <li>
+                            <a href="Five.html">5. This event will be great</a>
+                        </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+           <div class="page-header" id="banner">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Let's go shopping</h1>
+            </div>
+        </div>
+    </div>
+            <div ng-app="shoppinglist">
+    <div class="col-lg-6" ng-controller="ShoppingListCtrl">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Item name</th>
+                    <th>Number of items</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in itemlist">
+                    <td></td>
+                    <td></td>
+                    <td><a href="#">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="well">
+            <form class="form-horizontal">
+                <fieldset>
+                    <legend>New Item</legend>
+                    <div class="form-group">
+                        <label for="name" class="col-lg-2 control-label">Name</label>
+                        <div class="col-lg-10">
+                            <input ng-model="itemName" type="text" class="form-control" id="name" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="number" class="col-lg-2 control-label">Number of items</label>
+                        <div class="col-lg-10">
+                            <input ng-model="itemAmount" type="number" class="form-control" id="number" placeholder="Number of items">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Exercises</h3>
+            </div>
+            <div class="panel-body">
+                <ol>
+                    <li>
+                        <p>Have a look at the javascript files in the <em>/scripts/shoppinglist</em> folder. Make the item name and the item amount show in the table to the left.</p>
+                    </li>
+                    <li>
+                        <p>
+                            Notice that the ShoppingList controller contains a function called "add". Make sure this function is called when the submit button is clicked.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Notice that the ShoppingList controller contains a function called "delete". Make sure this function is called when the delete link in the last column is clicked.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Add another link to the last column called "Add one". This link should call a function in the ShoppingList controller called "addOne", which adds 1 to the number of items of the item called.
+                        </p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">More information</h3>
+            </div>
+            <div class="panel-body">
+                What we're using here is the <a target="_blank" href="http://docs.angularjs.org/api/ng.directive:ngApp">ngApp</a> directive and the <a target="_blank" href="http://docs.angularjs.org/api/ng.directive:ngClick">ngClick</a> directive. 
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <p>
+                <a class="btn btn-primary right" href="Four.html">Next exercise!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+        <div id="push"></div>
+      
+    </div>
+      <div id="footer">
+            <div class="container">
+                <p class="credit">Created by <a href="http://www.twitter.com/karolikl" target="_blank">Karoline Klever</a>. <strong>Do you like this lab?</strong> Please Tweet about it using the hashtag #AngularJSLab</p>
+            </div>
+        </div>
+        <script src="Scripts/jquery/jquery-1.9.1.js"></script>
+    <script src="Scripts/bootstrap/bootstrap.js"></script>
+    <script src="Scripts/angular/angular.js"></script>
+       <script src="Scripts/shoppinglist/shoppinglist.js"></script>
+    <script src="Scripts/shoppinglist/shoppinglistCtrl.js"></script>
+</body>
+</html>

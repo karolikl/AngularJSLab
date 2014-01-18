@@ -1,0 +1,1 @@
+﻿var imageModule = angular.module('image', []);
