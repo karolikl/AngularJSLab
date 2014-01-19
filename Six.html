@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>This event will be great - AngularJSLab</title>
+    <title>Contacts on a single page - AngularJSLab</title>
     <link href="styles/site.css" rel="stylesheet">
     <link href="styles/bootstrap.css" rel="stylesheet">
 </head>
@@ -59,59 +59,48 @@
            <div class="page-header" id="banner">
         <div class="row">
             <div class="col-lg-12">
-                <h1>This event will be great</h1>
+                <h1>Contacts on a single page</h1>
             </div>
         </div>
     </div>
-<div ng-app>
-    <div class="col-lg-6">
-        <div class="well">
-            <form name="regForm" class="form-horizontal">
-                <fieldset>
-                    <legend>Registration Form</legend>
-                    <div class="form-group">
-                        <label for="inputFirstname" class="col-lg-2 control-label">Firstname</label>
-                        <div class="col-lg-10">
-                            <input type="text" name="firstname" class="form-control" id="inputFirstname" ng-model="person.firstname" placeholder="Firstname" required>
-                            <span ng-show="regForm.firstname.$error.required" class="help-block error">Firstname is required</span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLastname" class="col-lg-2 control-label">Lastname</label>
-                        <div class="col-lg-10">
-                            <input type="text" class="form-control" id="inputLastname" ng-model="person.lastname" placeholder="Lastname">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPhone" class="col-lg-2 control-label">Phone</label>
-                        <div class="col-lg-10">
-                            <input type="text" name="phone" class="form-control" id="inputPhone" ng-model="person.phone" placeholder="Phone number">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-                        <div class="col-lg-10">
-                            <input type="email" name="email" class="form-control" id="inputEmail" ng-model="person.email" placeholder="Email" required>
-                            <span ng-show="regForm.email.$error.required" class="help-block error">Email is required</span>
-                            <span ng-show="regForm.email.$error.email" class="help-block error">Not a valid email address</span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputWebsite" class="col-lg-2 control-label">Website</label>
-                        <div class="col-lg-10">
-                            <input type="url" name="website" class="form-control" id="inputWebsite" ng-model="person.website" placeholder="Website">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-lg-10 col-lg-offset-2">
-                            <button class="btn btn-default">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <p class="help-block">The form has been changed</p>
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
+<div ng-app="contactlist">
+    <div class="col-lg-6" ng-controller="ContactListCtrl">
+        <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+            <li><a href="#/" data-toggle="tab">Table view</a></li>
+            <li><a href="#/list" data-toggle="tab">List view</a></li>
+        </ul>
+        <div class="form-group">
+            <label class="control-label" for="searchInput">Search by name:</label>
+            <input class="form-control" ng-model="query" id="searchInput" type="text" placeholder="Search by name" />
         </div>
+        <div ng-view></div>
+
+        <script type="text/ng-template" id="table.html">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                 <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="friend in friends | filter:query | orderBy:name">
+                <td>{{friend.name}}</td>
+                <td>{{friend.email }}</td>
+                     <td><a href="#/contactlist/edit/{{friend.name}}">Edit</a></td>
+            </tr>
+        </tbody>
+    </table>
+</script>
+   <script type="text/ng-template" id="list.html">
+<div class="list-group">
+    <div class="list-group-item" ng-repeat="friend in friends | filter:query | orderBy:name">
+        <h4 class="list-group-item-heading">{{friend.name}}</h4>
+        <p class="list-group-item-text">{{friend.email }}</p>
+    </div>
+    </div>
+</script>
     </div>
     <div class="col-lg-4">
         <div class="panel panel-primary">
@@ -122,26 +111,25 @@
                 <ol>
                     <li>
                         <p>
-                            Make lastname a required field, displaying an error message below the input if it is invalid. 
+                            Open the developer toolbar in your browser and watch the network traffic as you change back and forth between Table view and List view.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Phone number should not be required, but it has to contain between 8 and 12 characters. An error message should be displayed under the input if the length requirement is not satisfied. Please add validation logic to satisfy these requirements. 
+                            Create another ng-template script tag on the page with the id plaintext.html. Within this template, loop through the array of friends and output the name and email in plain text.
+                            <em>Note: If you run this project on a webserver, the template can be a separate html file. 
+                            However, if it's in a separate file and not running on a webserver, the browser will give you a cross origin request error. Putting the template in a script tag on the same page as we do here results in AngularJS retrieving the template without doing an AJAX request, avoiding all cross origin request errors.</em>
                         </p>
                     </li>
                     <li>
                         <p>
-                            The value entered into the Website input has to be a valid url. Can you add an error message below the input if the value entered is not valid?
+                            Add a route to <em>/Scripts/contactlist/contactlist.js</em>, pointing to the template previously created, and the ContactListCtrl controller.
                         </p>
                     </li>
                     <li>
                         <p>
-                            If the form is invalid, the submit button should be disabled. Can you fix this?
+                            Add a "Plain text view" tab to the page, and test if it works as it should. Make sure the name search also works for your template.
                         </p>
-                    </li>
-                    <li>
-                        <p>At the moment the text "The form has been changed" is showing at all times. Can you make this text display only when the form is dirty (has been changed)?</p>
                     </li>
                 </ol>
             </div>
@@ -151,16 +139,14 @@
                 <h3 class="panel-title">More information</h3>
             </div>
             <div class="panel-body">
-                What we're using here is the <a target="_blank" href="http://docs.angularjs.org/api/ng.directive:ngShow">ngShow</a> directive, the <a target="_blank" href="http://docs.angularjs.org/api/ng.directive:input.text">input.text</a> directive, the <a target="_blank" href="http://docs.angularjs.org/api/ng.directive:input.url">input.url</a> directive and the <a target="_blank" href="http://docs.angularjs.org/api/ng.directive:ngDisabled">ngDisabled</a> directive. 
+                What we're using here is the <a target="_blank" href="http://docs.angularjs.org/api/ngRoute.directive:ngView">ngView</a> directive and the <a target="_blank" href="http://docs.angularjs.org/api/ngRoute.$routeProvider">routeProvider</a> service. 
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <div>
-                <p>
-                <a class="btn btn-primary" href="Six.html">Next exercise!</a>
-                </p>
+        <div class="alert alert-success">
+              <strong>Well done!</strong> You successfully reached the end of the lab. Keep in touch tough, there will be more exercises coming up shortly! Tell your friends!
             </div>
         </div>
     </div>
@@ -178,5 +164,7 @@
         <script src="Scripts/jquery/jquery-1.9.1.js"></script>
     <script src="Scripts/bootstrap/bootstrap.js"></script>
     <script src="Scripts/angular/angular.js"></script>
+        <script src="Scripts/contactlist/contactlist.js"></script>
+    <script src="Scripts/angular/angular-route.min.js"></script>
 </body>
 </html>
