@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Have you seen these movies? - AngularJSLab</title>
+    <link href="styles/site.css" rel="stylesheet">
+    <link href="styles/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+    <div id="wrap">
+             <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="index.html" class="navbar-brand">AngularJSLab</a>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Resources <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                        <li><a href="http://angularjs.org/" target="_blank">angularjs.org</a></li>
+                        <li><a href="http://www.youtube.com/watch?v=i9MHigUZKEM" target="_blank">AngularJS Video</a></li>
+                        <li><a href="http://fastandfluid.com/publicdownloads/AngularJSIn60MinutesIsh_DanWahlin_May2013.pdf" target="_blank">AngularJS E-book</a></li>
+                        <li><a href="https://flipboard.com/section/the-angularjs-magazine-bbIMWS" target="_blank">AngularJS Magazine</a></li>
+                    </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Exercises<span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+                                <li>
+                                    <a href="One.html">1. Tell me your name!</a>
+                                </li>
+                                <li>
+                                    <a href="Two.html">2. Have you seen these movies?</a>
+                                </li>
+                                <li>
+                                    <a href="Three.html">3. Let&#39;s go shopping</a>
+                                </li>
+                                <li>
+                                    <a href="Four.html">4. The staring dog</a>
+                                </li>
+                                <li>
+                            <a href="Five.html">5. This event will be great</a>
+                        </li>
+       <li>
+                            <a href="Six.html">6. Contacts on a single page</a>
+                        </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+           <div class="page-header" id="banner">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Have you seen these movies?</h1>
+            </div>
+        </div>
+    </div>
+             <div ng-app>
+ <div class="col-lg-6" ng-controller="MovieCtrl">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="movie in movies">
+                <span class="badge">{{movie.rating}}</span>
+                <h4 class="list-group-item-heading">{{movie.title}}</h4>
+                <p class="list-group-item-text">Director: {{movie.director}}</p>
+                <p class="list-group-item-text">Budget: {{movie.budget}}</p>
+                <p class="list-group-item-text">Length:</p>
+                Stars:
+            </li>
+        </ul>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Exercises</h3>
+            </div>
+            <div class="panel-body">
+                <ol>
+                    <li>
+                        <p>Take a look at the following file: <em>/scripts/movies/movieCtrl.js</em>, and see how an array of movies is created on the scope. Notice that the length of the movie is not dispayed in the overview, can you fix this?</p>
+                    </li>
+                    <li>
+                        <p>
+                            Each movie also contains an array of stars. Using the ng-repeat attribute, can you display the names of all the stars for each movie?
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            The movie budget is now shown as a simple number, and it would be better for this to be displayed with a currency sign and proper formatting. Use the currency filter in AngularJS to improve how budget is displayed. 
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Using another filter, make the title of the movie uppercased.
+                        </p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">More information</h3>
+            </div>
+            <div class="panel-body">
+                What we're using here are the <a target="_blank" href="http://docs.angularjs.org/api/ng.directive:ngController">ngController</a> directive, the <a target="_blank" href="http://docs.angularjs.org/api/ng.directive:ngRepeat">ngRepeat</a> directive, the <a target="_blank" href="http://docs.angularjs.org/api/ng.filter:currency">currency</a> filter and the the <a target="_blank" href="http://docs.angularjs.org/api/ng.filter:uppercase">uppercase</a> filter. 
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <p>
+                   <a class="btn btn-primary" href="Three.html">Next exercise!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+        <div id="push"></div>
+      
+    </div>
+      <div id="footer">
+            <div class="container">
+                <p class="credit">Created by <a href="http://www.twitter.com/karolikl" target="_blank">Karoline Klever</a>. <strong>Do you like this lab?</strong> Please Tweet about it using the hashtag #AngularJSLab</p>
+            </div>
+        </div>
+        <script src="Scripts/jquery/jquery-1.9.1.js"></script>
+    <script src="Scripts/bootstrap/bootstrap.js"></script>
+    <script src="Scripts/angular/angular.js"></script>
+     <script src="Scripts/movies/movieCtrl.js"></script>
+</body>
+</html>
