@@ -1,6 +1,6 @@
 AngularJSLab
 ============
-
+Check out the [demo](http://karolikl.github.io/AngularJSLab/) of AngularJSLab!  
 This lab contains AngularJS exercises to kick start your AngularJS learning, giving you hands on exercises to work with. The project will be continously updated with more exercises, so check in now and then when you've finished the lab. 
 
 How does it work?
