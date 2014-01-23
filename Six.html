@@ -83,14 +83,12 @@
             <tr>
                 <th>Name</th>
                 <th>Email</th>
-                 <th></th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="friend in friends | filter:query | orderBy:name">
                 <td>{{friend.name}}</td>
                 <td>{{friend.email }}</td>
-                     <td><a href="#/contactlist/edit/{{friend.name}}">Edit</a></td>
             </tr>
         </tbody>
     </table>
